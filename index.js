@@ -135,10 +135,10 @@ XOAuth2Generator.prototype.generateToken = function(callback){
 XOAuth2Generator.prototype.buildXOAuth2Token = function(accessToken){
     var authData = [
         "user=" + (this.options.user || ""),
-        "auth=Bearer " + accessToken,
-        "",
-        ""];
-    return new Buffer(authData.join("\x01"), "utf-8").toString("base64");
+        "\x01auth=Bearer " + accessToken,
+        "\x01",
+        "\x01"];
+    return new Buffer(authData.join(""), "utf-8").toString("base64");
 };
 
 
